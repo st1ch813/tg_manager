@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: telegram-daily-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: TIMEZONE
+        value: Europe/Kyiv
+      - key: SEND_TIME
+        value: "07:00"
+      - key: OUTAGE_SOURCE
+        value: prokyiv
+      - key: OUTAGE_AREA
+        value: oblast
+      - key: BOT_TOKEN
+        sync: false
+      - key: CHAT_ID
+        sync: false
+      - key: CITY
+        sync: false
+      - key: STREET
+        sync: false
+      - key: OUTAGE_GROUP
+        sync: false
